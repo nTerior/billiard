@@ -11,11 +11,12 @@ public enum BallColor {
     BLUE(Color.CYAN),
     RED(Color.RED),
     GREEN(new Color(0, 128, 0)),
+    ORANGE(new Color(198, 65, 34)),
     LIGHT_GREEN(new Color(0, 220, 0)),
     PINK(Color.PINK),
     BLACK(Color.BLACK);
 
-    Color color;
+    private Color color;
 
     BallColor(Color color) {
         this.color = color;
