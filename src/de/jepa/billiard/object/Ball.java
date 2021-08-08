@@ -36,6 +36,10 @@ public class Ball {
         // ToDo: Render ball
     }
 
+    public void tick(){
+
+    }
+
     @Override
     public String toString() {
         return "Ball(" + number + ")" + "{" + color + ", " + type + "}";

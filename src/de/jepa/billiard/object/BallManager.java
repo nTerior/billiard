@@ -40,4 +40,8 @@ public class BallManager {
     public static void removeBall(Ball ball) {
         balls.remove(ball);
     }
+
+    public static void moveBalls(long deltaTime){
+
+    }
 }

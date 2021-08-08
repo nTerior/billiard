@@ -1,9 +1,9 @@
 package de.jepa.billiard;
 
-import de.jepa.billiard.window.Window;
+import de.jepa.billiard.game.Game;
 
 public class Billiard {
     public static void main(String[] args) {
-        new Window();
+        new Game();
     }
 }
