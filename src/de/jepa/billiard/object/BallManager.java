@@ -27,6 +27,7 @@ public class BallManager {
     }
 
     public static void move(WhiteBall whiteBall, long delta) {
+        // ToDo: Move all balls accordingly to whiteBalls position and velocity
     }
 
     // Renders all balls at once
