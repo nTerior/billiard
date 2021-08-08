@@ -9,6 +9,8 @@ public class Vec2d {
     public double y;
 
     public Vec2d() {
+        this.x = 0;
+        this.y = 0;
     }
 
     public Vec2d(double x, double y) {
