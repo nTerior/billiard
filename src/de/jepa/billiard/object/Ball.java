@@ -8,8 +8,8 @@ import de.jepa.billiard.util.math.Vec2d;
 
 import java.awt.*;
 
-public abstract class Ball {
-    public static final int PIXEL_DRAW_SIZE = 20;
+public class Ball {
+    public static final int PIXEL_DRAW_RADIUS = 10;
 
     private BallColor color;
     private BallType type;
@@ -19,6 +19,25 @@ public abstract class Ball {
     private Vec2d position;
     private Vec2d velocity;
 
-    abstract void onGoal();
-    abstract void render(Graphics2D g);
+    public Ball(BallColor color, BallType type, int number) {
+        // ToDo: Add set starting positions based on number
+        this.color = color;
+        this.type = type;
+        this.number = number;
+    }
+
+    public void onGoal() {
+        BallManager.removeBall(this);
+        // ToDo: Add point to correct player
+    }
+
+    public void render(Graphics2D g) {
+        g.setColor(color.getColor());
+        // ToDo: Render ball
+    }
+
+    @Override
+    public String toString() {
+        return "Ball(" + number + ")" + "{" + color + ", " + type + "}";
+    }
 }
