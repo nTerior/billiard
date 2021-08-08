@@ -1,7 +1,9 @@
 package de.jepa.billiard;
 
+import de.jepa.billiard.window.Window;
+
 public class Billiard {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        new Window();
     }
 }
