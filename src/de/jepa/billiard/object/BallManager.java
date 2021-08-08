@@ -24,4 +24,8 @@ public class BallManager {
     public ArrayList<Ball> getBalls() {
         return balls;
     }
+
+    public static void moveBalls(long deltaTime){
+
+    }
 }

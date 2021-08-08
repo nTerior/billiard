@@ -1,54 +1,63 @@
 package de.jepa.billiard.game;
 
 import de.jepa.billiard.camera.Camera;
+import de.jepa.billiard.object.BallManager;
+import de.jepa.billiard.window.Window;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 public class Game {
 
+    private final long TICK_TIME = (long) (1000D / 60);
+
     private Camera camera;
 
     private Thread gameLoop;
     private boolean isRunning = false;
 
-    public Game(){
-
+    public Game() {
+        new Window();
+        initGame();
     }
 
 
-    private void initGame(){
-
+    private void initGame() {
+        startGame();
     }
 
-    private void startGame(){
+    private void startGame() {
         isRunning = true;
         run();
     }
 
-    private void stopGame(){
+    private void stopGame() {
         isRunning = false;
     }
 
-    private void run(){
+    private void run() {
         gameLoop = new Thread(() -> {
-            while(isRunning){
-                tick();
+            long deltaTime = System.currentTimeMillis();
+            while (isRunning) {
+                long startTime = System.currentTimeMillis();
+                deltaTime = System.currentTimeMillis() - deltaTime;
+                tick(deltaTime);
                 render();
+                sleep(startTime);
             }
         });
     }
 
-    private void tick(){
-
+    private void tick(long deltaTime) {
+        BallManager.moveBalls(deltaTime);
     }
 
-    private void render(){
-        BufferStrategy bufferStrategy = camera.getBufferStrategy();
-        if (bufferStrategy == null) {
+    private void render() {
+        BufferStrategy bufferStrategy;
+        do {
+            bufferStrategy = camera.getBufferStrategy();
             camera.createBufferStrategy(3);
-            return;
-        }
+        } while (bufferStrategy == null);
 
         Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
 
@@ -58,5 +67,8 @@ public class Game {
         bufferStrategy.show();
     }
 
-
+    @SuppressWarnings("StatementWithEmptyBody")
+    private void sleep(long startTime) {
+        while (System.currentTimeMillis() <= startTime + TICK_TIME) ;
+    }
 }

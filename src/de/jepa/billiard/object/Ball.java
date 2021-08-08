@@ -21,4 +21,7 @@ public abstract class Ball {
 
     abstract void onGoal();
     abstract void render(Graphics2D g);
+    public void tick(){
+
+    }
 }
