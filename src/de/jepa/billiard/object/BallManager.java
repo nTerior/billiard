@@ -19,8 +19,11 @@ public class BallManager {
         for (int i = 0; i < 7; i++) {
             balls.add(new Ball(BallColor.values()[i], BallType.HALF, i + 9));
         }
-
+        balls.add(new WhiteBall());
         System.out.println(balls.toString());
+    }
+
+    public static void move(WhiteBall whiteBall, long delta) {
     }
 
     public static void render(Graphics2D g) {

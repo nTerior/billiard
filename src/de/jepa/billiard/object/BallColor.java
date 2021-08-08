@@ -14,7 +14,9 @@ public enum BallColor {
     ORANGE(new Color(198, 65, 34)),
     LIGHT_GREEN(new Color(0, 220, 0)),
     PINK(Color.PINK),
-    BLACK(Color.BLACK);
+    BLACK(Color.BLACK),
+
+    WHITE(Color.WHITE);
 
     private Color color;
 
