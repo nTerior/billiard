@@ -20,6 +20,7 @@ public class Ball {
     private Vec2d velocity;
 
     public Ball(BallColor color, BallType type, int number) {
+        // ToDo: Add set starting positions based on number
         this.color = color;
         this.type = type;
         this.number = number;
@@ -27,11 +28,12 @@ public class Ball {
 
     public void onGoal() {
         BallManager.removeBall(this);
+        // ToDo: Add point to correct player
     }
 
     public void render(Graphics2D g) {
         g.setColor(color.getColor());
-
+        // ToDo: Render ball
     }
 
     @Override

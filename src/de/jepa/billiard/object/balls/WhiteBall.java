@@ -1,10 +1,12 @@
-package de.jepa.billiard.object;
+package de.jepa.billiard.object.balls;
 
 /*
  * By Paul Stier, 8/8/21
  */
 
-import java.awt.*;
+import de.jepa.billiard.object.Ball;
+import de.jepa.billiard.object.BallColor;
+import de.jepa.billiard.object.BallType;
 
 public class WhiteBall extends Ball {
     public WhiteBall() {
@@ -13,10 +15,7 @@ public class WhiteBall extends Ball {
 
     @Override
     public void onGoal() {
-    }
-
-    @Override
-    public void render(Graphics2D g) {
+        // ToDo: Reset position + change active player
     }
 
     @Override
