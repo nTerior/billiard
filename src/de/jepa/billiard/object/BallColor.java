@@ -4,7 +4,7 @@ package de.jepa.billiard.object;
  * By Paul Stier, 8/8/21
  */
 
-import java.awt.Color;
+import java.awt.*;
 
 public enum BallColor {
     YELLOW(Color.YELLOW),

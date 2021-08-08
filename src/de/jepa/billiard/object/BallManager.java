@@ -20,7 +20,6 @@ public class BallManager {
             balls.add(new Ball(BallColor.values()[i], BallType.HALF, i + 9));
         }
         balls.add(new WhiteBall());
-        System.out.println(balls.toString());
     }
 
     public static void move(WhiteBall whiteBall, long delta) {
