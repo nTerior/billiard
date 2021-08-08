@@ -44,4 +44,13 @@ public class BallManager {
     public static void moveBalls(long deltaTime){
 
     }
+
+    // This state won't change => Call every time for ball state retrieval
+    public static ArrayList<Ball> getCurrentState() {
+        ArrayList<Ball> list = new ArrayList<>();
+        for (int i = 0; i < balls.size(); i++) {
+            list.add(balls.get(i).clone());
+        }
+        return list;
+    }
 }

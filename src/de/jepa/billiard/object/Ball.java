@@ -4,6 +4,8 @@ package de.jepa.billiard.object;
  * By Paul Stier, 8/8/21
  */
 
+import de.jepa.billiard.object.balls.BlackBall;
+import de.jepa.billiard.object.balls.WhiteBall;
 import de.jepa.billiard.util.math.Vec2d;
 
 import java.awt.*;
@@ -43,5 +45,22 @@ public class Ball {
     @Override
     public String toString() {
         return "Ball(" + number + ")" + "{" + color + ", " + type + "}";
+    }
+
+    @Override
+    public Ball clone() {
+        Ball ball = new Ball(color, type, number);
+
+        if (this instanceof BlackBall) {
+            ball = new BlackBall();
+        }
+        if (this instanceof WhiteBall) {
+            ball = new WhiteBall();
+        }
+
+        ball.position = position.clone();
+        ball.velocity = velocity.clone();
+
+        return ball;
     }
 }
