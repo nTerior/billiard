@@ -10,7 +10,6 @@ import de.jepa.billiard.object.BallType;
 import de.jepa.billiard.object.StartingPosition;
 import de.jepa.billiard.util.math.Vec2d;
 
-import javax.xml.stream.events.StartDocument;
 import java.awt.*;
 
 public class Ball {

@@ -7,12 +7,9 @@ package de.jepa.billiard.object;
 import de.jepa.billiard.object.balls.Ball;
 import de.jepa.billiard.object.balls.BlackBall;
 import de.jepa.billiard.object.balls.WhiteBall;
-import de.jepa.billiard.util.math.Vec2d;
-import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class BallManager {
 
@@ -36,6 +33,7 @@ public class BallManager {
 
     /**
      * renders all Balls using ArrayList&#60Ball&#62 balls
+     *
      * @param g Graphics2D
      */
     public static void render(Graphics2D g) {
@@ -48,7 +46,8 @@ public class BallManager {
     /**
      * renders all Balls using the bufferList
      * so that it is thread save
-     * @param g Graphics2D
+     *
+     * @param g          Graphics2D
      * @param bufferList ArrayList&#60Ball&#62
      */
     public static void render(Graphics2D g, ArrayList<Ball> bufferList) {
@@ -62,7 +61,7 @@ public class BallManager {
         balls.remove(ball);
     }
 
-    public static void moveBalls(long deltaTime){
+    public static void moveBalls(long deltaTime) {
 
     }
 

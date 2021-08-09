@@ -3,7 +3,7 @@ package de.jepa.billiard.object;
 import de.jepa.billiard.util.math.Vec2d;
 
 public enum StartingPosition {
-    WHITE(new Vec2d(500,500)),
+    WHITE(new Vec2d(500, 500)),
     ONE(new Vec2d(100, 100)),
     TWO(new Vec2d(105, 110)),
     THREE(new Vec2d(110, 120)),

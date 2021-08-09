@@ -2,7 +2,6 @@ package de.jepa.billiard.util.math;
 
 import java.util.Objects;
 
-@SuppressWarnings("unused")
 /*
  *  inspired from Vec2d
  */
@@ -11,7 +10,8 @@ public class Vec2i {
     public int x;
     public int y;
 
-    public Vec2i() { }
+    public Vec2i() {
+    }
 
     public Vec2i(int x, int y) {
         this.x = x;
@@ -20,6 +20,22 @@ public class Vec2i {
 
     public Vec2i(Vec2i v) {
         set(v);
+    }
+
+    public static Vec2i add(Vec2i v1, Vec2i v2) {
+        return new Vec2i(v1.x + v2.x, v1.y + v2.y);
+    }
+
+    public static Vec2i subtract(Vec2i v1, Vec2i v2) {
+        return new Vec2i(v1.x - v2.x, v1.y - v2.y);
+    }
+
+    public static int dot(Vec2i v1, Vec2i v2) {
+        return v1.x * v2.x + v1.y * v2.y;
+    }
+
+    public static int cross(Vec2i v1, Vec2i v2) {
+        return (v1.x * v2.y - v1.y * v2.x);
     }
 
     public void set(int x, int y) {
@@ -87,10 +103,6 @@ public class Vec2i {
         this.y += vy;
     }
 
-    public static Vec2i add(Vec2i v1, Vec2i v2) {
-        return new Vec2i(v1.x + v2.x, v1.y + v2.y);
-    }
-
     public Vec2i getAdded(Vec2i v) {
         return new Vec2i(this.x + v.x, this.y + v.y);
     }
@@ -105,10 +117,6 @@ public class Vec2i {
         this.y -= vy;
     }
 
-    public static Vec2i subtract(Vec2i v1, Vec2i v2) {
-        return new Vec2i(v1.x - v2.x, v1.y - v2.y);
-    }
-
     public Vec2i getSubtracted(Vec2i v) {
         return new Vec2i(this.x - v.x, this.y - v.y);
     }
@@ -119,7 +127,7 @@ public class Vec2i {
     }
 
     public Vec2i getMultiplied(double scalar) {
-        return new Vec2i((int)(x * scalar), (int)(y * scalar));
+        return new Vec2i((int) (x * scalar), (int) (y * scalar));
     }
 
     public void divide(int scalar) {
@@ -130,7 +138,6 @@ public class Vec2i {
     public Vec2i getDivided(int scalar) {
         return new Vec2i(x / scalar, y / scalar);
     }
-
 
     @SuppressWarnings("SuspiciousNameCombination")
     public Vec2i getPerp() {
@@ -145,20 +152,12 @@ public class Vec2i {
         return (this.x * vx + this.y * vy);
     }
 
-    public static int dot(Vec2i v1, Vec2i v2) {
-        return v1.x * v2.x + v1.y * v2.y;
-    }
-
     public int cross(Vec2i v) {
         return (this.x * v.y - this.y * v.x);
     }
 
     public int cross(int vx, int vy) {
         return (this.x * vy - this.y * vx);
-    }
-
-    public static int cross(Vec2i v1, Vec2i v2) {
-        return (v1.x * v2.y - v1.y * v2.x);
     }
 
     public void reverse() {
@@ -170,7 +169,7 @@ public class Vec2i {
         return new Vec2i(-x, -y);
     }
 
-    public Vec2d toVec2d(){
+    public Vec2d toVec2d() {
         return new Vec2d(x, y);
     }
 

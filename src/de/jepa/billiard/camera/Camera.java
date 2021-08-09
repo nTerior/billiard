@@ -27,7 +27,7 @@ public class Camera extends Canvas {
 
     private void initCamera() {
         addMouseListener(new MouseInterrupts());
-        setBounds(new Rectangle(0,0, Window.SIZE.x, Window.SIZE.y));
+        setBounds(new Rectangle(0, 0, Window.SIZE.x, Window.SIZE.y));
         setBackground(Color.DARK_GRAY);
     }
 

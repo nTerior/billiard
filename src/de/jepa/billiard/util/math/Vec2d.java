@@ -2,7 +2,7 @@ package de.jepa.billiard.util.math;
 
 
 import java.util.Objects;
-@SuppressWarnings("unused")
+
 public class Vec2d {
 
     public double x;
@@ -20,6 +20,34 @@ public class Vec2d {
 
     public Vec2d(Vec2d v) {
         set(v);
+    }
+
+    public static Vec2d toCartesian(double magnitude, double angle) {
+        return new Vec2d(magnitude * Math.cos(angle), magnitude * Math.sin(angle));
+    }
+
+    public static Vec2d add(Vec2d v1, Vec2d v2) {
+        return new Vec2d(v1.x + v2.x, v1.y + v2.y);
+    }
+
+    public static Vec2d subtract(Vec2d v1, Vec2d v2) {
+        return new Vec2d(v1.x - v2.x, v1.y - v2.y);
+    }
+
+    public static double dot(Vec2d v1, Vec2d v2) {
+        return v1.x * v2.x + v1.y * v2.y;
+    }
+
+    public static double cross(Vec2d v1, Vec2d v2) {
+        return (v1.x * v2.y - v1.y * v2.x);
+    }
+
+    public static double project(Vec2d v1, Vec2d v2) {
+        return (dot(v1, v2) / v1.getLength());
+    }
+
+    public static Vec2d getProjectedVector(Vec2d v1, Vec2d v2) {
+        return v1.getNormalized().getMultiplied(Vec2d.dot(v1, v2) / v1.getLength());
     }
 
     public void set(double x, double y) {
@@ -74,7 +102,7 @@ public class Vec2d {
     }
 
     public double getAngle() {
-        return -Math.atan2(-y , -x) + Math.PI;
+        return -Math.atan2(-y, -x) + Math.PI;
     }
 
     public void normalize() {
@@ -86,10 +114,6 @@ public class Vec2d {
     public Vec2d getNormalized() {
         double magnitude = getLength();
         return new Vec2d(x / magnitude, y / magnitude);
-    }
-
-    public static Vec2d toCartesian(double magnitude, double angle) {
-        return new Vec2d(magnitude * Math.cos(angle), magnitude * Math.sin(angle));
     }
 
     public Vec2d getXPart() {
@@ -114,10 +138,6 @@ public class Vec2d {
         this.y += vy;
     }
 
-    public static Vec2d add(Vec2d v1, Vec2d v2) {
-        return new Vec2d(v1.x + v2.x, v1.y + v2.y);
-    }
-
     public Vec2d getAdded(Vec2d v) {
         return getAdded(v.x, v.y);
     }
@@ -136,13 +156,10 @@ public class Vec2d {
         this.y -= vy;
     }
 
-    public static Vec2d subtract(Vec2d v1, Vec2d v2) {
-        return new Vec2d(v1.x - v2.x, v1.y - v2.y);
-    }
-
     public Vec2d getSubtracted(Vec2d v) {
         return new Vec2d(this.x - v.x, this.y - v.y);
     }
+
     public Vec2d getSubtracted(double dx, double dy) {
         return new Vec2d(this.x - dx, this.y - dy);
     }
@@ -177,20 +194,12 @@ public class Vec2d {
         return (this.x * vx + this.y * vy);
     }
 
-    public static double dot(Vec2d v1, Vec2d v2) {
-        return v1.x * v2.x + v1.y * v2.y;
-    }
-
     public double cross(Vec2d v) {
         return (this.x * v.y - this.y * v.x);
     }
 
     public double cross(double vx, double vy) {
         return (this.x * vy - this.y * vx);
-    }
-
-    public static double cross(Vec2d v1, Vec2d v2) {
-        return (v1.x * v2.y - v1.y * v2.x);
     }
 
     public double project(Vec2d v) {
@@ -201,20 +210,12 @@ public class Vec2d {
         return (this.dot(vx, vy) / this.getLength());
     }
 
-    public static double project(Vec2d v1, Vec2d v2) {
-        return (dot(v1, v2) / v1.getLength());
-    }
-
     public Vec2d getProjectedVector(Vec2d v) {
         return this.getNormalized().getMultiplied(this.dot(v) / this.getLength());
     }
 
     public Vec2d getProjectedVector(double vx, double vy) {
         return this.getNormalized().getMultiplied(this.dot(vx, vy) / this.getLength());
-    }
-
-    public static Vec2d getProjectedVector(Vec2d v1, Vec2d v2) {
-        return v1.getNormalized().getMultiplied(Vec2d.dot(v1, v2) / v1.getLength());
     }
 
     public void rotateBy(double angle) {
