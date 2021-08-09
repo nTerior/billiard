@@ -25,7 +25,8 @@ public class Game {
     private void initGame() {
         window = new Window();
         camera = new Camera();
-        window.add(camera);
+        window.addContent(camera);
+        window.display();
     }
 
     private void startGame() {

@@ -49,15 +49,15 @@ public class Camera extends Canvas {
 
     private void render() {
         BufferStrategy bufferStrategy;
+
         do {
-            bufferStrategy = this.getBufferStrategy();
             this.createBufferStrategy(3);
+            bufferStrategy = this.getBufferStrategy();
         } while (bufferStrategy == null);
 
         Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
 
         g.clearRect(0, 0, getWidth(), getHeight());
-
         render(g);
 
         g.dispose();

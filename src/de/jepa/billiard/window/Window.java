@@ -13,14 +13,16 @@ public class Window extends JFrame {
         setTitle("Billiard");
         setSize(SIZE.x, SIZE.y);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setVisible(true);
     }
 
     public void addContent(Component component) {
         add(component);
         component.setVisible(true);
+    }
+
+    public void display() {
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 }
