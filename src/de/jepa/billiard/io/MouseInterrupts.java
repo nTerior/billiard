@@ -24,6 +24,8 @@ public class MouseInterrupts extends MouseAdapter {
         Mouse.dragging = true;
         Mouse.dragDir.x = e.getX() - Mouse.dragStart.x;
         Mouse.dragDir.y = e.getY() - Mouse.dragStart.y;
+        Mouse.x = e.getX();
+        Mouse.y = e.getY();
 
         Mouse.mouseDragListeners.forEach(l -> l.onDrag(Mouse.dragStart, Mouse.dragDir));
     }
