@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 public class Camera extends Canvas {
 
+    public static final HUD hud = new HUD();
     private final long RENDER_TIME = (long) (1000D / 60);
-
     private ArrayList<Ball> bufferList;
 
     public Camera() {
@@ -71,6 +71,8 @@ public class Camera extends Canvas {
 
     private void render(Graphics2D g) {
         bufferList = BallManager.getCurrentState();
+        hud.renderDrag(g);
         BallManager.render(g, bufferList);
+        hud.render(g);
     }
 }

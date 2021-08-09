@@ -15,16 +15,22 @@ public class BallManager {
 
     private static ArrayList<Ball> balls = new ArrayList<>();
 
+    public static WhiteBall whiteBall;
+    public static BlackBall blackBall;
+
     // Generates 7 full balls, 7 half balls, a Black and a white ball
     static {
+        whiteBall = new WhiteBall();
+        blackBall = new BlackBall();
+
         for (int i = 0; i < 7; i++) {
             balls.add(new Ball(BallColor.values()[i], BallType.FULL, i + 1));
         }
-        balls.add(new BlackBall());
+        balls.add(blackBall);
         for (int i = 0; i < 7; i++) {
             balls.add(new Ball(BallColor.values()[i], BallType.HALF, i + 9));
         }
-        balls.add(new WhiteBall());
+        balls.add(whiteBall);
     }
 
     public static void move(WhiteBall whiteBall, long delta) {

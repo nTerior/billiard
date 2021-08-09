@@ -2,6 +2,7 @@ package de.jepa.billiard.io;
 
 import de.jepa.billiard.io.events.MouseClick;
 import de.jepa.billiard.io.events.MouseDrag;
+import de.jepa.billiard.io.events.MousePostDrag;
 import de.jepa.billiard.util.math.Vec2i;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
  */
 public class Mouse {
     protected static ArrayList<MouseDrag> mouseDragListeners = new ArrayList<>();
+    protected static ArrayList<MousePostDrag> mousePostDragListeners = new ArrayList<>();
     protected static ArrayList<MouseClick> mouseClickListeners = new ArrayList<>();
 
     public static int x = 0;
@@ -30,6 +32,7 @@ public class Mouse {
 
     public static Vec2i dragStart = new Vec2i();
     public static Vec2i dragDir = new Vec2i();
+    public static boolean dragging = false;
 
     public static void addClickListener(MouseClick click) {
         mouseClickListeners.add(click);
@@ -43,5 +46,12 @@ public class Mouse {
     }
     public static void removeDragListener(MouseDrag drag) {
         mouseDragListeners.remove(drag);
+    }
+
+    public static void addPostDragListener(MousePostDrag drag) {
+        mousePostDragListeners.add(drag);
+    }
+    public static void removePostDragListener(MousePostDrag drag) {
+        mousePostDragListeners.remove(drag);
     }
 }

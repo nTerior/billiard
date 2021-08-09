@@ -93,4 +93,12 @@ public class Ball {
 
         return ball;
     }
+
+    public Vec2d getPosition() {
+        return position;
+    }
+
+    public void setPosition(Vec2d position) {
+        this.position = position;
+    }
 }

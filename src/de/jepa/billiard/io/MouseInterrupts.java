@@ -4,6 +4,8 @@ package de.jepa.billiard.io;
  * By Paul Stier, 8/8/21
  */
 
+import de.jepa.billiard.util.math.Vec2i;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -19,6 +21,7 @@ public class MouseInterrupts extends MouseAdapter {
 
     @Override
     public void mouseDragged(MouseEvent e) {
+        Mouse.dragging = true;
         Mouse.dragDir.x = e.getX() - Mouse.dragStart.x;
         Mouse.dragDir.y = e.getY() - Mouse.dragStart.y;
 
@@ -42,6 +45,15 @@ public class MouseInterrupts extends MouseAdapter {
 
     @Override
     public void mouseReleased(MouseEvent e) {
+
+        if(Mouse.dragging) {
+            Mouse.dragging = false;
+            Mouse.mousePostDragListeners.forEach(l -> l.postDrag(Mouse.dragStart, new Vec2i(e.getX(), e.getY()), Mouse.dragDir));
+        }
+
+        Mouse.dragDir.x = 0;
+        Mouse.dragDir.y = 0;
+
         if (e.getButton() == MouseEvent.BUTTON1) Mouse.leftButtonDown = false;
         if (e.getButton() == MouseEvent.BUTTON2) Mouse.middleButtonDown = false;
         if (e.getButton() == MouseEvent.BUTTON3) Mouse.rightButtonDown = false;
