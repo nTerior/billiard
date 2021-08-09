@@ -50,12 +50,14 @@ public class Camera extends Canvas {
     private void render() {
         BufferStrategy bufferStrategy = this.getBufferStrategy();
 
-        if(bufferStrategy == null) {
+        if (bufferStrategy == null) {
             this.createBufferStrategy(3);
             return;
         }
 
         Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
         g.clearRect(0, 0, getWidth(), getHeight());
         render(g);
