@@ -64,7 +64,8 @@ public class Ball {
         int x = (int) position.x + (PIXEL_DRAW_RADIUS - m.stringWidth(number + "")) / 2;
         int y = (int) position.y + ((PIXEL_DRAW_RADIUS - m.getHeight()) / 2) + m.getAscent();
 
-        g.drawString(number + "", x, y);
+        if(number != 0)
+            g.drawString(number + "", x, y);
     }
 
     public void tick() {
