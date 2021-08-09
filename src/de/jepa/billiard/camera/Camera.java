@@ -26,7 +26,10 @@ public class Camera extends Canvas {
     }
 
     private void initCamera() {
-        addMouseListener(new MouseInterrupts());
+        MouseInterrupts mouseInterrupts = new MouseInterrupts();
+        addMouseListener(mouseInterrupts);
+        addMouseMotionListener(mouseInterrupts);
+
         setBounds(new Rectangle(0, 0, Window.SIZE.x, Window.SIZE.y));
         setBackground(Color.DARK_GRAY);
     }
