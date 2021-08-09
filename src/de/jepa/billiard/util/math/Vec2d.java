@@ -2,7 +2,7 @@ package de.jepa.billiard.util.math;
 
 
 import java.util.Objects;
-
+@SuppressWarnings("unused")
 public class Vec2d {
 
     public double x;

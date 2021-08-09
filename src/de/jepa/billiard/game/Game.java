@@ -2,33 +2,35 @@ package de.jepa.billiard.game;
 
 import de.jepa.billiard.camera.Camera;
 import de.jepa.billiard.object.BallManager;
+import de.jepa.billiard.util.time.Time;
 import de.jepa.billiard.window.Window;
 
-import java.awt.*;
-import java.awt.image.BufferStrategy;
 
 public class Game {
 
-    private final long TICK_TIME = (long) (1000D / 60);
+    private final long TICK_TIME = (long) (1000D / 180);
 
+    private Window window;
     private Camera camera;
 
-    private Thread gameLoop;
-    private boolean isRunning = false;
+    private static boolean isRunning = false;
 
     public Game() {
-        new Window();
         initGame();
+        startGame();
     }
 
 
     private void initGame() {
-        startGame();
+        window = new Window();
+        camera = new Camera();
+        window.add(camera);
     }
 
     private void startGame() {
         isRunning = true;
         run();
+        camera.startRendering();
     }
 
     private void stopGame() {
@@ -36,39 +38,27 @@ public class Game {
     }
 
     private void run() {
-        gameLoop = new Thread(() -> {
+        new Thread(() -> {
             long deltaTime = System.currentTimeMillis();
             while (isRunning) {
                 long startTime = System.currentTimeMillis();
                 deltaTime = System.currentTimeMillis() - deltaTime;
                 tick(deltaTime);
-                render();
-                sleep(startTime);
+                Time.sleep(startTime,TICK_TIME);
             }
-        });
+        }).start();
     }
 
     private void tick(long deltaTime) {
         BallManager.moveBalls(deltaTime);
     }
 
-    private void render() {
-        BufferStrategy bufferStrategy;
-        do {
-            bufferStrategy = camera.getBufferStrategy();
-            camera.createBufferStrategy(3);
-        } while (bufferStrategy == null);
-
-        Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
-
-        camera.render(g);
-
-        g.dispose();
-        bufferStrategy.show();
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     private void sleep(long startTime) {
         while (System.currentTimeMillis() <= startTime + TICK_TIME) ;
+    }
+
+    public static boolean isRunning() {
+        return isRunning;
     }
 }
