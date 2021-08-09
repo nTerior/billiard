@@ -11,9 +11,10 @@ import de.jepa.billiard.object.StartingPosition;
 import de.jepa.billiard.util.math.Vec2d;
 
 import java.awt.*;
+import java.awt.geom.RoundRectangle2D;
 
 public class Ball {
-    public static final int PIXEL_DRAW_RADIUS = 10;
+    public static final int PIXEL_DRAW_RADIUS = 30;
 
     private BallColor color;
     private BallType type;
@@ -39,9 +40,31 @@ public class Ball {
     }
 
     public void render(Graphics2D g) {
+        RoundRectangle2D.Double shape = new RoundRectangle2D.Double((int) position.x, (int) (position.y + PIXEL_DRAW_RADIUS / 2.75), PIXEL_DRAW_RADIUS, PIXEL_DRAW_RADIUS / 3, PIXEL_DRAW_RADIUS / 3, PIXEL_DRAW_RADIUS / 3);
+
         g.setColor(color.getColor());
         g.fillOval((int) position.x, (int) position.y, PIXEL_DRAW_RADIUS, PIXEL_DRAW_RADIUS);
-        // ToDo: Render ball
+
+        if (type == BallType.HALF) {
+            g.setColor(Color.WHITE);
+            g.fill(shape);
+        }
+
+        g.setColor(Color.BLACK);
+
+        // Outlines
+        g.setStroke(new BasicStroke(2));
+        g.drawOval((int) position.x, (int) position.y, PIXEL_DRAW_RADIUS, PIXEL_DRAW_RADIUS);
+
+        if (number == 8) g.setColor(Color.WHITE);
+
+        g.setFont(new Font("Arial", Font.PLAIN, 20));
+        FontMetrics m = g.getFontMetrics();
+
+        int x = (int) position.x + (PIXEL_DRAW_RADIUS - m.stringWidth(number + "")) / 2;
+        int y = (int) position.y + ((PIXEL_DRAW_RADIUS - m.getHeight()) / 2) + m.getAscent();
+
+        g.drawString(number + "", x, y);
     }
 
     public void tick() {
