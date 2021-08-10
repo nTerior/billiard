@@ -18,7 +18,7 @@ public class HUD {
     public void renderDrag(Graphics2D g) {
         if (Mouse.dragDir.x == 0 && Mouse.dragDir.y == 0) return;
 
-        g.setColor(Color.RED);
+        g.setColor(new Color(207, 131, 82));
         g.setStroke(new BasicStroke(2));
 
         int centerX = (int) BallManager.whiteBall.getPosition().x + Ball.PIXEL_DRAW_RADIUS / 2;
